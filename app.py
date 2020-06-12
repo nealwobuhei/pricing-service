@@ -3,7 +3,6 @@ from views.alerts import alert_blueprint
 from views.stores import store_blueprint
 from views.users import user_blueprint
 import os
-from libs.mailgun import Mailgun
 
 app = Flask(__name__)
 app.secret_key = os.urandom(64)
@@ -11,6 +10,7 @@ app.config.update(
     ADMIN=os.environ.get('ADMIN')
 )  # flask automatically load the '.env' file, and it will populate 'os.environ' for environment
 # you can get any value that is in your '.env' file--with .get
+
 
 @app.route('/')
 def home():
