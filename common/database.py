@@ -1,11 +1,12 @@
+import os
 from typing import Dict
 
 import pymongo as pymongo
 
 
 class Database:
-    URI = "mongodb://127.0.0.1:27017/pricing"  # port of mongodb
-    DATABASE = pymongo.MongoClient(URI).get_database()  # get database
+    URI = os.environ.get("MONGOLAB_URI")  # port of mongodb
+    DATABASE = pymongo.MongoClient(URI).get_default_database()  # get database
 
     @staticmethod  # call method directly with class(Database), without creating a object of the class
     def insert(collection: str, data: Dict):
